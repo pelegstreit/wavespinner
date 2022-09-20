@@ -1,0 +1,49 @@
+$colors: #ff0dff #e80c7a #ff0000 #e82c0c #ff530d;
+$delay: 111ms;
+
+.stripes-box {
+  list-style-type: none;
+  font-size: 0;
+  width: 40px;
+  display: flex;
+  @for $color from 1 through length($colors){
+    .stripe:nth-child(#{$color}){
+      background: nth($colors,$color);
+      animation: colorbars 330ms alternate infinite $delay*$color;
+      @if $color ==1{
+        border-radius: 3px 0 0 3px;
+      }
+      @else if $color == length($colors){
+        border-radius: 0 3px 3px 0 ;
+      }
+    }
+  }
+  .stripe {
+    width: 8px;
+    height: 45px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    animation: colorbars 1s linear infinite;
+    border-radius: 10%;
+  } 
+}
+
+@keyframes colorbars {
+  0%{
+    transform: translateY(0);
+  }
+// 25%{
+//   transform: translateY(-10px);
+  
+//   }
+//   75%{
+//     transform: translateY(10px);
+//   }
+50%{
+  transform: translateY(-10px);
+}
+  100%{
+    transform: translateY(0);
+  }
+  
+  
+}
